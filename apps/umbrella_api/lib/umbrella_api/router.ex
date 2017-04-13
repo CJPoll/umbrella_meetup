@@ -13,13 +13,13 @@ defmodule UmbrellaApi.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/internal", UmbrellaApi.Web.Internal do
+  scope "/internal", UmbrellaApi.Internal do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
-  scope "/", UmbrellaApi.Web.External do
+  scope "/", UmbrellaApi.External do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index

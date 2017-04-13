@@ -8,13 +8,9 @@ defmodule Bookstore.Inventory do
   def create_book(book_params) do
     cs = Book.changeset(%Book{}, book_params)
 
-    if cs.valid? do
-      case Repo.insert(cs) do
-        {:ok, book} -> {:ok, book}
-        {:error, changeset} -> {:error, changeset}
-      end
-    else
-      {:error, cs}
+    case Repo.insert(cs) do
+      {:ok, book} -> {:ok, book}
+      {:error, changeset} -> {:error, changeset}
     end
   end
 end
